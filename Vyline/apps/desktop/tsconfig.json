@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@vyline/types": ["./../../packages/types/src/index.ts"]
+    }
+  },
+  "include": ["src"],
+  "exclude": [
+    "src/components/IosBackupWizard.tsx",
+    "src/components/custom-cursor.tsx",
+    "src/components/nezu-cursor.tsx",
+    "src/components/nezu-theme-panel.tsx",
+    "src/components/pin-lock-screen.tsx",
+    "src/lib/theme-presets.ts",
+    "node_modules",
+    "dist"
+  ]
+}

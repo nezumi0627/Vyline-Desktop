@@ -1,0 +1,3 @@
+data/*
+!data/desktop-profile.fallback.json
+node_modules/

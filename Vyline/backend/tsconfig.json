@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "types": ["bun"],
+    "paths": {
+      "@vyline/types": ["../../packages/types/src/index.ts"],
+      "@vyline/protocol": ["../../packages/protocol/src/index.ts"],
+      "@vyline/plugin-sdk": ["../../packages/plugin/sdk/src/index.ts"],
+      "@vyline/ios-backup": ["../../packages/ios-backup/src/index.ts"]
+    }
+  },
+  "exclude": [
+    "src/tools/iosLineExtract.ts",
+    "src/service/iosBackupService.ts",
+    "node_modules",
+    "dist",
+    "data"
+  ]
+}

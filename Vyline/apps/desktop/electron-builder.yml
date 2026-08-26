@@ -1,0 +1,36 @@
+appId: jp.nezumi.vyline.desktop
+productName: Vyline Desktop
+artifactName: Vyline-Desktop-${version}-${arch}.${ext}
+directories:
+  output: release
+asar: true
+electronLanguages:
+  - en-US
+  - ja
+files:
+  - dist/**
+  - dist-electron/**
+  - package.json
+extraResources:
+  - from: resources/vyline-backend.exe
+    to: vyline-backend.exe
+win:
+  target:
+    - nsis
+    - portable
+  executableName: VylineDesktop
+  icon: public/icon-dark-32x32.png
+  requestedExecutionLevel: asInvoker
+  verifyUpdateCodeSignature: true
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Vyline Desktop (Beta)
+  artifactName: Vyline-Desktop-${version}-setup.${ext}
+publish:
+  provider: github
+  owner: nezumi0627
+  repo: Vyline-Desktop
+  releaseType: prerelease

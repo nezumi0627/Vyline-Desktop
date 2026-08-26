@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Vyline — 自分の環境で動かせる、オープンソースのLINEサードパーティクライアント。セットアップ、ドキュメント、APIリファレンスはこちら。"
+    />
+    <meta name="theme-color" content="#f2f3ec" />
+    <meta property="og:title" content="Vyline — 会話の主導権を、あなたの環境へ。" />
+    <meta
+      property="og:description"
+      content="Setup guides, documentation, Swagger API reference and source code for Vyline."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nezumi0627.github.io/vyline/" />
+    <link rel="canonical" href="https://nezumi0627.github.io/vyline/" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2311130f'/%3E%3Cpath d='M7 6l9 21L25 6h-5l-4 12-4-12z' fill='%23b7f45d'/%3E%3C/svg%3E"
+    />
+    <title>Vyline — Documentation &amp; Setup</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">本文へ移動</a>
+
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Vyline ホーム">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M7 6 16 27 25 6h-5l-4 12-4-12Z" />
+        </svg>
+        <span>VYLINE</span>
+        <small>/ BETA</small>
+      </a>
+
+      <nav class="site-nav" aria-label="メインナビゲーション">
+        <a href="#setup">SETUP</a>
+        <a href="#docs">DOCS</a>
+        <a href="#open-source">OPEN SOURCE</a>
+      </nav>
+
+      <div class="header-portals">
+        <a
+          href="https://nezumi0627.github.io/vyline-api/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Swagger APIリファレンスを開く"
+        >
+          <span>API</span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" /></svg>
+        </a>
+        <a
+          href="https://github.com/nezumi0627/vyline"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="VylineのGitHubリポジトリを開く"
+        >
+          <span>GITHUB</span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" /></svg>
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-rules" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+
+        <div class="hero-topline">
+          <p><span class="status-dot"></span> DOCUMENTATION PORTAL / 0.6.1</p>
+          <p>SETUP / DOCS / API REFERENCE<br />THE OPEN SOURCE ENTRY POINT</p>
+        </div>
+
+        <h1 id="hero-title">
+          <span>Vylineの</span>
+          <span>入口。</span>
+        </h1>
+
+        <p class="hero-purpose">
+          Vylineを使い始める人、仕組みを知りたい人、APIを試したい人のための公式ドキュメントポータルです。
+        </p>
+
+        <div
+          class="signal-stage"
+          role="img"
+          aria-label="複数の信号線から形づくられたVylineのV"
+        >
+          <canvas id="signal-canvas" aria-hidden="true"></canvas>
+          <svg class="signal-fallback" viewBox="0 0 640 640" aria-hidden="true">
+            <g fill="none" stroke="currentColor">
+              <circle cx="320" cy="320" r="126" />
+              <ellipse cx="320" cy="320" rx="220" ry="76" transform="rotate(-26 320 320)" />
+              <ellipse cx="320" cy="320" rx="220" ry="76" transform="rotate(54 320 320)" opacity=".5" />
+              <path d="M320 184v272M184 320h272" opacity=".22" />
+              <rect x="289" y="289" width="62" height="62" transform="rotate(45 320 320)" />
+            </g>
+          </svg>
+          <span class="signal-coordinate signal-coordinate-a">35.6812° N</span>
+          <span class="signal-coordinate signal-coordinate-b">139.7671° E</span>
+        </div>
+
+        <div class="hero-bottom">
+          <p class="hero-intro">
+            まずはセットアップガイドへ。開発者はDocsとSwaggerへ。すべての入口を、読む順番に並べています。
+          </p>
+          <div class="hero-facts" aria-label="Vylineの特徴">
+            <span>LOCAL FIRST</span>
+            <span>MIT LICENSE</span>
+            <span>OPENAPI 3.1</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="portal-band" aria-label="主要リンク">
+        <a
+          class="portal-link portal-link-swagger"
+          href="https://nezumi0627.github.io/vyline-api/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span class="portal-meta">01 / API REFERENCE</span>
+          <strong>SWAGGER</strong>
+          <span class="portal-arrow" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><path d="M7 25 25 7M12 7h13v13" /></svg>
+          </span>
+        </a>
+        <a
+          class="portal-link portal-link-github"
+          href="https://github.com/nezumi0627/vyline"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span class="portal-meta">02 / SOURCE CODE</span>
+          <strong>GITHUB</strong>
+          <span class="portal-arrow" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><path d="M7 25 25 7M12 7h13v13" /></svg>
+          </span>
+        </a>
+      </section>
+
+      <section class="setup-section page-section" id="setup" aria-labelledby="setup-title">
+        <header class="section-heading">
+          <p class="section-index">01 / SETUP GUIDE</p>
+          <h2 id="setup-title">迷わず始めるための、<br />最短ルート。</h2>
+          <p class="section-summary">
+            使い方に合わせて入口を選んでください。デスクトップ版の導入からセルフホスト、更新まで、一次資料へ直接つながります。
+          </p>
+        </header>
+
+        <div class="guide-list">
+          <details open>
+            <summary>
+              <span class="guide-number">01</span>
+              <span class="guide-title">Download beta</span>
+              <span class="guide-description">Windows / Linux向けの最新リリースを取得</span>
+              <span class="guide-type">RELEASES</span>
+              <span class="guide-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="guide-detail">
+              <p>Vylineを試す最初のステップです。GitHub Releasesから最新版を選び、利用するOSのパッケージをダウンロードしてください。</p>
+              <ul>
+                <li>Windows: セットアップ実行ファイルを起動</li>
+                <li>Linux: x64アーカイブを展開して起動</li>
+                <li>Beta版のため、利用前に注意事項を確認</li>
+              </ul>
+              <a class="guide-source" href="https://github.com/nezumi0627/vyline/releases/latest" target="_blank" rel="noreferrer">GitHubでリリースを見る ↗</a>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="guide-number">02</span>
+              <span class="guide-title">First setup</span>
+              <span class="guide-description">必要環境、起動、ログインまでの初回ガイド</span>
+              <span class="guide-type">ONBOARDING</span>
+              <span class="guide-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="guide-detail">
+              <p>初回起動に必要な環境変数、バックエンドとフロントエンドの起動、ログインまでを順番に確認できます。</p>
+              <ul>
+                <li>Bun 1.4以上と依存関係を準備</li>
+                <li>開発サーバーまたは配布版を起動</li>
+                <li>QR / Emailログインと同意ゲートを完了</li>
+              </ul>
+              <a class="guide-source" href="https://github.com/nezumi0627/vyline/blob/main/docs/onboarding.md" target="_blank" rel="noreferrer">Markdown原文を読む ↗</a>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="guide-number">03</span>
+              <span class="guide-title">Self-host</span>
+              <span class="guide-description">DockerとCloudflare Accessで自分の環境へ</span>
+              <span class="guide-type">DEPLOYMENT</span>
+              <span class="guide-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="guide-detail">
+              <p>データとセッションを自分で管理したい人向けの導入方法です。Docker Composeを使い、必要に応じてCloudflare Accessを前段に置けます。</p>
+              <ul>
+                <li>Docker Composeでバックエンドを起動</li>
+                <li>静的フロントエンドの公開先を設定</li>
+                <li>外部公開時は認証と秘密情報の扱いを確認</li>
+              </ul>
+              <a class="guide-source" href="https://github.com/nezumi0627/vyline/blob/main/docs/selfhosting.md" target="_blank" rel="noreferrer">Markdown原文を読む ↗</a>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="guide-number">04</span>
+              <span class="guide-title">Keep updated</span>
+              <span class="guide-description">安全に最新版へ更新するための手順</span>
+              <span class="guide-type">USER GUIDE</span>
+              <span class="guide-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="guide-detail">
+              <p>更新前にデータと設定を確認し、リリースノートに目を通してから最新版へ移行します。</p>
+              <ul>
+                <li>重要なバックアップを先に作成</li>
+                <li>変更点と既知の注意事項を確認</li>
+                <li>更新後にログインと同期状態を確認</li>
+              </ul>
+              <a class="guide-source" href="https://github.com/nezumi0627/vyline/blob/main/docs/user-guide/update.md" target="_blank" rel="noreferrer">Markdown原文を読む ↗</a>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="guide-number">05</span>
+              <span class="guide-title">Explore the API</span>
+              <span class="guide-description">Swaggerで仕様を読み、実際のエンドポイントを確認</span>
+              <span class="guide-type">OPENAPI 3.1</span>
+              <span class="guide-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="guide-detail">
+              <p>API利用者はSwagger UIからPublic APIと内部BFFの仕様を切り替え、パラメータ、レスポンス、認証方式を確認できます。</p>
+              <ul>
+                <li>Public API: 安定した外部利用向け</li>
+                <li>BFF API: フロントエンド内部向け</li>
+                <li>OpenAPI JSON / YAMLもGitHubから取得可能</li>
+              </ul>
+              <a class="guide-source" href="https://nezumi0627.github.io/vyline-api/" target="_blank" rel="noreferrer">Swagger UIを開く ↗</a>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="docs-section" id="docs" aria-labelledby="docs-title">
+        <div class="docs-inner">
+          <header class="section-heading section-heading-dark">
+            <p class="section-index">02 / DOCUMENTATION</p>
+            <h2 id="docs-title">調べる。理解する。<br />つくり始める。</h2>
+            <p class="section-summary">
+              ユーザー向けの操作ガイドから、アーキテクチャとプロトコル実装まで。READMEをさまよう必要はありません。
+            </p>
+          </header>
+
+          <div class="docs-directory">
+            <a
+              href="https://github.com/nezumi0627/vyline/tree/main/docs/user-guide"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="doc-index">A—01</span>
+              <strong>User guide</strong>
+              <small>アップデート、テーマ、カスタムクライアント</small>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M9 5h10v10" /></svg>
+            </a>
+            <a
+              href="https://github.com/nezumi0627/vyline/tree/main/docs/developers"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="doc-index">A—02</span>
+              <strong>Developer guide</strong>
+              <small>開発の入口、プラグイン、AIエージェント向け指示</small>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M9 5h10v10" /></svg>
+            </a>
+            <a
+              href="https://github.com/nezumi0627/vyline/blob/main/docs/architecture.md"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="doc-index">A—03</span>
+              <strong>Architecture</strong>
+              <small>Frontend、BFF、Protocolの境界とデータフロー</small>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M9 5h10v10" /></svg>
+            </a>
+            <a
+              href="https://github.com/nezumi0627/vyline/blob/main/docs/protocol/dictionary.md"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="doc-index">A—04</span>
+              <strong>Protocol dictionary</strong>
+              <small>LINE.js名、Desktopの証拠、Vyline実装の対応表</small>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M9 5h10v10" /></svg>
+            </a>
+            <a
+              href="https://github.com/nezumi0627/vyline/blob/main/docs/CONTRIBUTING.md"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="doc-index">A—05</span>
+              <strong>Contributing</strong>
+              <small>機能追加フロー、レビュー、セキュリティ上の注意</small>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M9 5h10v10" /></svg>
+            </a>
+          </div>
+
+          <article class="swagger-feature">
+            <div class="swagger-copy">
+              <p class="swagger-kicker"><span></span> LIVE REFERENCE / OPENAPI 3.1</p>
+              <h3>APIを、<br />仕様書のまま<br />触って確かめる。</h3>
+              <p>Public APIと内部BFFの仕様を切り替え、エンドポイントとスキーマをブラウザから確認できます。</p>
+              <a
+                href="https://nezumi0627.github.io/vyline-api/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                OPEN SWAGGER
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M9 5h10v10" /></svg>
+              </a>
+            </div>
+            <div class="swagger-mark" aria-hidden="true">
+              <span>O</span><span>A</span><span>3</span><span>.1</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="source-section page-section" id="open-source" aria-labelledby="source-title">
+        <header class="source-heading">
+          <p class="section-index">03 / OPEN SOURCE</p>
+          <h2 id="source-title">隠さず、閉じず、<br />一緒につくる。</h2>
+          <p>
+            VylineはMITライセンスのオープンソースプロジェクトです。実装を読む、Issueを立てる、改善を送る。すべてGitHubから始められます。
+          </p>
+        </header>
+
+        <a
+          class="github-marquee"
+          href="https://github.com/nezumi0627/vyline"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="VylineをGitHubで開く"
+        >
+          <span>GITHUB</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M18 82 82 18M38 18h44v44" /></svg>
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-main">
+        <a class="wordmark footer-wordmark" href="#top" aria-label="ページ先頭へ">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 6 16 27 25 6h-5l-4 12-4-12Z" /></svg>
+          <span>VYLINE</span>
+        </a>
+        <p>
+          非公式・未承認のサードパーティクライアントです。LINE株式会社およびLY Corporationとは関係ありません。
+        </p>
+        <nav aria-label="フッターナビゲーション">
+          <a href="#setup">SETUP</a>
+          <a href="#docs">DOCS</a>
+          <a href="https://nezumi0627.github.io/vyline-api/" target="_blank" rel="noreferrer">API</a>
+          <a href="https://github.com/nezumi0627/vyline" target="_blank" rel="noreferrer">GITHUB</a>
+        </nav>
+      </div>
+      <div class="footer-meta">
+        <span>MIT LICENSE</span>
+        <span>© 2026 VYLINE CONTRIBUTORS</span>
+        <span>TOKYO / JP</span>
+      </div>
+    </footer>
+
+    <noscript>
+      <p class="noscript-note">3Dビジュアル以外のすべてのリンクはJavaScriptなしでも利用できます。</p>
+    </noscript>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
