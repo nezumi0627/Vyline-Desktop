@@ -8,6 +8,8 @@ dist/
 dist-ssr/
 *.local
 *.tsbuildinfo
+**/bin/
+**/obj/
 
 # Logs
 logs/
