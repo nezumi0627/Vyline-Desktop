@@ -12,7 +12,7 @@
     },
     "Vyline/apps/desktop": {
       "name": "@vyline/desktop-windows",
-      "version": "0.1.0-beta.1",
+      "version": "0.1.0-beta.2",
       "dependencies": {
         "@vyline/themes": "workspace:*",
         "@vyline/types": "workspace:*",
@@ -48,6 +48,7 @@
       "version": "0.1.0",
       "dependencies": {
         "@vyline/ios-backup": "workspace:*",
+        "@vyline/nezuline": "workspace:*",
         "@vyline/plugin-sdk": "workspace:*",
         "@vyline/protocol": "workspace:*",
         "@vyline/types": "workspace:*",
