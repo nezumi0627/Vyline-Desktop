@@ -1,2 +1,0 @@
-[test]
-preload = ["./Vyline/packages/protocol/stack/test-preload.ts"]
