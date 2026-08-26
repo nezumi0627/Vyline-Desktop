@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.0-beta.3] — 2026-08-26 — Windows Electron検証版
+
+### 修正
+
+- `electron-updater` を実行時依存として同梱し、インストール後の `ERR_MODULE_NOT_FOUND` を修正
+- Actions の Windows Release に installer / portable EXE / blockmap / `latest.yml` を配置
+
+### 注意
+
+- 検証用Beta。一般利用・本番利用は推奨しない
+- 未署名ビルドのためSmartScreen警告が表示される場合がある
+
 ## [0.1.0-beta.2] — 2026-08-26 — Windows Electron検証版
 
 ### 追加
