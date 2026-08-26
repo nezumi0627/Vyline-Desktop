@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.1.0-beta.4] — 2026-08-26 — Windows Electron検証版
+
+### 修正
+
+- `electron-updater` を CommonJS 互換の default import 経由で読み込み、ESM 起動時の `Named export 'autoUpdater' not found` を修正
+
+### 注意
+
+- 検証用Beta。一般利用・本番利用は推奨しない
+- 未署名ビルドのためSmartScreen警告が表示される場合がある
+
 ## [0.1.0-beta.3] — 2026-08-26 — Windows Electron検証版
 
 ### 修正

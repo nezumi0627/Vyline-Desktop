@@ -3,7 +3,9 @@ import { spawn, type ChildProcess } from "node:child_process";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { autoUpdater } from "electron-updater";
+import electronUpdater from "electron-updater";
+
+const { autoUpdater } = electronUpdater;
 
 const BACKEND_PORT = 3001;
 const BACKEND_URL = `http://127.0.0.1:${BACKEND_PORT}`;
