@@ -28,7 +28,8 @@ import { ensureMediaStorageDir } from "./storage/mediaStorage.js";
 import { subdeviceRouter } from "./api/subdevices.js";
 import { isSubdeviceSessionValid } from "./storage/subdeviceStore.js";
 
-const PORT = Number(process.env.PORT ?? 3001);
+// Web keeps PORT=3001; the WebView2 host supplies a dynamically reserved loopback port.
+const PORT = Number(process.env.VYLINE_BACKEND_PORT ?? process.env.PORT ?? 3001);
 const LAN_ACCESS = process.env.VYLINE_LAN_ACCESS === "true";
 const HOST = LAN_ACCESS ? "0.0.0.0" : (process.env.VYLINE_HOST ?? "127.0.0.1");
 const CORS_ORIGIN = process.env.VYLINE_CORS_ORIGIN ?? "http://localhost:5173";

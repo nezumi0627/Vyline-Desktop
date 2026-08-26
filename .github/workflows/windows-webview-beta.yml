@@ -1,0 +1,122 @@
+name: Windows WebView2 Beta Draft
+
+on:
+  workflow_dispatch:
+    inputs:
+      vyline_ref:
+        description: "Vyline repo の branch / tag / commit SHA"
+        required: true
+        default: main
+        type: string
+      version:
+        description: "Desktop release version (例: 0.1.0-beta.7)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Desktop host
+        uses: actions/checkout@v4
+        with:
+          path: desktop
+
+      - name: Checkout selected Vyline source
+        uses: actions/checkout@v4
+        with:
+          repository: nezumi0627/vyline
+          ref: ${{ inputs.vyline_ref }}
+          path: vyline
+          fetch-depth: 0
+          submodules: recursive
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Validate version
+        shell: pwsh
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: |
+          if ($env:RELEASE_VERSION -notmatch '^\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') {
+            throw "Invalid semantic version: $env:RELEASE_VERSION"
+          }
+
+      - name: Install Vyline dependencies
+        working-directory: vyline
+        run: bun install --frozen-lockfile
+
+      - name: Prepare Vyline WebView2 build
+        shell: pwsh
+        run: |
+          ./desktop/scripts/prepare-vyline-webview.ps1 `
+            -SourceRoot ./vyline `
+            -DesktopRoot ./desktop `
+            -VylineRef '${{ inputs.vyline_ref }}' `
+            -ReleaseVersion '${{ inputs.version }}'
+
+      - name: Build Vyline renderer
+        working-directory: vyline
+        run: bun run build
+
+      - name: Build Vyline backend sidecar
+        working-directory: vyline
+        run: bun build Vyline/backend/src/index.ts --compile --target=bun-windows-x64 --windows-hide-console --outfile Vyline/apps/desktop/resources/vyline-backend.exe
+
+      - name: Publish WebView2 host
+        run: dotnet publish desktop/host/VylineDesktop.WebView2/VylineDesktop.WebView2.csproj --configuration Release --runtime win-x64 --self-contained true --output vyline/webview-publish
+
+      - name: Assemble WebView2 application
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path vyline/webview-publish/wwwroot -Force | Out-Null
+          New-Item -ItemType Directory -Path vyline/webview-publish/resources -Force | Out-Null
+          Copy-Item -Path vyline/Vyline/apps/desktop/dist/* -Destination vyline/webview-publish/wwwroot -Recurse -Force
+          Copy-Item -LiteralPath vyline/Vyline/apps/desktop/resources/vyline-backend.exe -Destination vyline/webview-publish/resources/vyline-backend.exe -Force
+          Copy-Item -LiteralPath vyline/Vyline/apps/desktop/resources/vyline-source.json -Destination vyline/webview-publish/resources/vyline-source.json -Force
+          Copy-Item -LiteralPath vyline/Vyline/packages/protocol/data/desktop-profile.fallback.json -Destination vyline/webview-publish/resources/desktop-profile.fallback.json -Force
+
+      - name: Install Inno Setup
+        shell: pwsh
+        run: choco install innosetup --no-progress --yes
+
+      - name: Build WebView2 installer
+        shell: pwsh
+        run: |
+          & 'C:\Program Files (x86)\Inno Setup 6\ISCC.exe' `
+            /DAppVersion='${{ inputs.version }}' `
+            /DSourceDir='${{ github.workspace }}\vyline\webview-publish' `
+            /DOutputDir='${{ github.workspace }}' `
+            '${{ github.workspace }}\desktop\installer\VylineDesktop.WebView2.iss'
+
+      - name: Package portable WebView2 host
+        shell: pwsh
+        run: |
+          Compress-Archive -Path vyline/webview-publish/* -DestinationPath "Vyline-Desktop-${{ inputs.version }}-WebView2.zip"
+
+      - name: Create draft GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: v${{ inputs.version }}
+          name: Vyline Desktop v${{ inputs.version }} (WebView2 Beta)
+          body: |
+            ⚠️ **検証用 Beta 版です。通常利用・本番利用は推奨しません。**
+
+            WebView2 host / dynamic loopback port
+            Vyline source ref: `${{ inputs.vyline_ref }}`
+          draft: true
+          prerelease: true
+          generate_release_notes: true
+          files: |
+            Vyline-Desktop-${{ inputs.version }}-WebView2.zip
+            Vyline-Desktop-Setup-${{ inputs.version }}.exe

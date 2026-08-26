@@ -35,6 +35,9 @@
 > [!CAUTION]<!--ja-->
 > Vyline は **LINE 非公式・未承認**のサードパーティクライアントです。LINE 株式会社および LY Corporation とは関係ありません。利用規約への抵触やアカウント停止を含むリスクを理解したうえで、自己責任で使用してください。<!--ja-->
 <!--ja-->
+> [!WARNING]<!--ja-->
+> これは Windows 向けの **WebView2 Beta / 検証用ビルド**です。通常利用・本番利用は推奨しません。Desktop repo は WebView2 の起動・配布層を管理し、Release Action の手動実行時に指定した Vyline repo の ref を取得して backend・protocol・renderer を組み立てます。<!--ja-->
+<!--ja-->
 > [!NOTE]<!--ja-->
 > 2026年8月20日に Beta 0.5.0 として公開を開始しました。現在のバージョンは **Beta 0.7.0** です。Beta 版のため、仕様変更・不具合・データ損失が発生する可能性があります。<!--ja-->
 <!--ja-->
@@ -129,6 +132,12 @@ Vyline の継続的な開発を支えるメンテナーとコントリビュー�
 ---<!--ja-->
 <!--ja-->
 ## インストール・更新<!--ja-->
+<!--ja-->
+### WebView2 Beta の手動リリース<!--ja-->
+<!--ja-->
+Windows Beta は GitHub Actions の `Windows WebView2 Beta Draft` を手動実行して作成します。`vyline_ref` に Vyline の branch / tag / commit SHA、`version` に Desktop のバージョンを指定してください。Action は選択した Vyline を取得し、WebView2 host・backend sidecar・renderer を組み立てて、portable 配布 ZIP と GitHub の draft prerelease を生成します。Desktop 側は固定ポートを使わず、起動時に空いている loopback ポートを確保します。<!--ja-->
+<!--ja-->
+この方式では backend や protocol を Desktop repo にコピーして保守しません。Vyline 側の更新を取り込むタイミングを Release ごとに選べるため、未検証の変更が自動で Desktop Beta に混入することを防げます。Web 版の `127.0.0.1:3001` は維持し、Desktop 版だけ実行ごとに動的なポートを使うため、同時起動時の競合を避けられます。<!--ja-->
 <!--ja-->
 ### 方法を選ぶ<!--ja-->
 <!--ja-->

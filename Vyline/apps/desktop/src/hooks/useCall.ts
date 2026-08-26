@@ -6,10 +6,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { api } from "@/api/client";
 import type { ActiveCall, CallUiState } from "@/utils/callAllowlist";
 
-const WS_BASE =
-  typeof location !== "undefined"
-    ? `${location.protocol === "https:" ? "wss" : "ws"}://${location.hostname}:3001`
-    : "ws://localhost:3001";
+const WS_BASE = (() => {
+  if (typeof location === "undefined") return "ws://localhost:3001";
+  const scheme = location.protocol === "https:" ? "wss" : "ws";
+  // Vite dev serves the renderer on 5173 and proxies API/WS to the web backend.
+  const port = location.port === "5173" ? "3001" : location.port || "3001";
+  return `${scheme}://${location.hostname}:${port}`;
+})();
 
 const PCM_FRAME_BYTES = 1920; // 960 samples × 2 @ 48kHz mono 20ms
 
