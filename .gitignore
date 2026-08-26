@@ -33,6 +33,8 @@ Vyline/backend/data/
 # (ガイレコのトリック: 先にディレキシを unignore しないとファイルの negation が効かない)
 !Vyline/packages/protocol/data/
 !Vyline/packages/protocol/data/desktop-profile.fallback.json
+!Vyline/packages/nezuline/data/
+!Vyline/packages/nezuline/data/desktop-profile.fallback.json
 **/desktop-e2ee-keys.json
 **/desktop-e2ee-dump.txt
 **/storage-*.json
