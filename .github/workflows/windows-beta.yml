@@ -21,10 +21,9 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun run desktop:sidecar
       - run: bun run desktop:build
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload beta artifacts
         uses: softprops/action-gh-release@v2
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           prerelease: true
           files: Vyline/apps/desktop/release/*
