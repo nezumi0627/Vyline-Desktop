@@ -27,6 +27,7 @@ import { ensureCdnCacheDir } from "./storage/cdnAssetCache.js";
 import { ensureMediaStorageDir } from "./storage/mediaStorage.js";
 import { subdeviceRouter } from "./api/subdevices.js";
 import { isSubdeviceSessionValid } from "./storage/subdeviceStore.js";
+import { accountSettingsRouter } from "./api/accountSettings.js";
 
 // Web keeps PORT=3001; the WebView2 host supplies a dynamically reserved loopback port.
 const PORT = Number(process.env.VYLINE_BACKEND_PORT ?? process.env.PORT ?? 3001);
@@ -131,6 +132,7 @@ app.route("/api/line", lineRouter);
 app.route("/api/beta/agent-i", agentIRouter);
 app.route("/api/debug", debugRouter);
 app.route("/api/cdn", cdnRouter);
+app.route("/api/settings/accounts", accountSettingsRouter);
 
 // 公開 REST API（Bearer トークン認証）
 app.route("/v1", publicRouter);
