@@ -3,7 +3,7 @@
 
 [日本語](README.md)
 
-+# Vyline
+# Vyline
 
 <p align="center">
   <strong>Vision Beyond Limits.</strong><br/>

@@ -19,7 +19,6 @@ win:
     - nsis
     - portable
   executableName: VylineDesktop
-  icon: public/icon-dark-32x32.png
   requestedExecutionLevel: asInvoker
   verifyUpdateCodeSignature: true
 nsis:

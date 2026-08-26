@@ -1,6 +1,6 @@
 {
   "name": "@vyline/desktop-windows",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.0-beta.2",
   "private": true,
   "type": "module",
   "main": "dist-electron/main.js",
@@ -18,7 +18,7 @@
     "pr:video:clips": "bun scripts/record-pr-demo-clips.ts",
     "electron:compile": "tsc -p tsconfig.electron.json && bun build electron/preload.ts --target=node --format=cjs --outfile dist-electron/preload.cjs",
     "desktop:dev": "bun run build && bun run electron:compile && electron .",
-    "desktop:build": "bun run build && bun run electron:compile && electron-builder --win",
+    "desktop:build": "bun run build && bun run electron:compile && electron-builder --win --publish never",
     "desktop:portable": "bun run build && bun run electron:compile && electron-builder --win portable",
     "desktop:sidecar": "bun build ../../backend/src/index.ts --compile --target=bun-windows-x64 --windows-hide-console --outfile resources/vyline-backend.exe"
   },

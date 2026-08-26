@@ -280,13 +280,12 @@ function messagePreview(m: Message): string {
 }
 
 export const UPDATE_NOTES = {
-  version: "0.7.0-beta",
-  title: "Vyline 0.7.0-beta — プラグイン・検索・LANアクセス改善",
+  version: "0.1.0-beta.2",
+  title: "Vyline Desktop 0.1.0-beta.2 — Windows Electron検証版",
   items: [
-    "ZIP プラグインのインストール、詳細表示、実行切替に対応",
-    "トーク横断検索、アカウント別容量・セッション状態表示を追加",
-    "LAN_ACCESS 時の他端末アクセスと iOS バックアップ復元を改善",
-    "通話 UI を非表示化し、OpenChat / Square は Coming Soon として整理",
+    "Windows x64向けElectron installerとportable版を追加",
+    "低負荷化のため単一Window、sandbox、遅延backend起動を採用",
+    "検証用Betaとして自動更新を明示操作に限定",
   ],
 };
 

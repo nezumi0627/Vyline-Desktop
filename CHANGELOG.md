@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.0-beta.2] — 2026-08-26 — Windows Electron検証版
+
+### 追加
+
+- Windows x64向けElectron installer / portable版
+- Bun backend sidecar、ASAR、日本語・英語限定の軽量配布
+- 署名済み配信URLを設定した場合だけ使える明示操作型Updater API
+
+### 注意
+
+- 検証用Beta。一般利用・本番利用は推奨しない
+- 未署名ビルドのためSmartScreen警告が表示される場合がある
+
 ## [0.7.0-beta] — 2026-08-25 — プラグイン・検索・LANアクセス改善
 
 ### 新機能
