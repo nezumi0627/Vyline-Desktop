@@ -280,10 +280,10 @@ function messagePreview(m: Message): string {
 }
 
 export const UPDATE_NOTES = {
-  version: "0.1.0-beta.5",
-  title: "Vyline Desktop 0.1.0-beta.5 — Windows Electron検証版",
+  version: "0.1.0-beta.6",
+  title: "Vyline Desktop 0.1.0-beta.6 — Windows Electron検証版",
   items: [
-    "ESMのmain processで__dirnameを正しく解決し、ローカル起動時の画面表示エラーを修正",
+    "Windows packaged sidecarの起動失敗を修正し、起動時の黒画面を解消",
     "Windows x64向けElectron installerとportable版を提供",
     "検証用Betaとして自動更新を明示操作に限定",
   ],

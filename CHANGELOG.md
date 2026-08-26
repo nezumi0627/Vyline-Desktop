@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.0-beta.6] — 2026-08-27 — Windows Electron検証版
+
+### 修正
+
+- Bun compiled backend で `pino-pretty` に依存しない JSON logger を使用
+- fallback profile を sidecar に埋め込み、packaged backend の起動失敗を修正
+- Windows packaged 起動時の黒画面を解消
+
+### 注意
+
+- 検証用Beta。一般利用・本番利用は推奨しない
+- 未署名ビルドのためSmartScreen警告が表示される場合がある
+
 ## [0.1.0-beta.5] — 2026-08-27 — Windows Electron検証版
 
 ### 修正

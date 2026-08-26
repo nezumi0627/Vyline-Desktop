@@ -13,6 +13,9 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    // Packaged Electron loads the renderer through file://, so assets must
+    // resolve relative to dist/index.html instead of the filesystem root.
+    base: "./",
     resolve: {
       alias: {
         "@": resolve(__dirname, "src"),
