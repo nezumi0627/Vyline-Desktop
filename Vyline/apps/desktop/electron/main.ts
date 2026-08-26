@@ -1,11 +1,12 @@
 import { app, BrowserWindow, ipcMain, Menu, shell } from "electron";
 import { spawn, type ChildProcess } from "node:child_process";
 import { existsSync } from "node:fs";
-import { join } from "node:path";
-import { pathToFileURL } from "node:url";
+import { dirname, join } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import electronUpdater from "electron-updater";
 
 const { autoUpdater } = electronUpdater;
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const BACKEND_PORT = 3001;
 const BACKEND_URL = `http://127.0.0.1:${BACKEND_PORT}`;
@@ -24,7 +25,7 @@ function startBackend() {
   }
 
   if (!app.isPackaged) {
-    const sourceRoot = join(__dirname, "../../backend/src/index.ts");
+    const sourceRoot = join(__dirname, "../../../backend/src/index.ts");
     backend = spawn("bun", [sourceRoot], {
       env: { ...process.env, PORT: String(BACKEND_PORT) },
       windowsHide: true,

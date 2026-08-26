@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.0-beta.5] — 2026-08-27 — Windows Electron検証版
+
+### 修正
+
+- ESM の Electron main process で `__dirname` を正しく解決
+- 開発時 backend sidecar の相対パスを修正
+- ローカル起動時に規約画面まで表示できることを確認
+
+### 注意
+
+- 検証用Beta。一般利用・本番利用は推奨しない
+- 未署名ビルドのためSmartScreen警告が表示される場合がある
+
 ## [0.1.0-beta.4] — 2026-08-26 — Windows Electron検証版
 
 ### 修正
